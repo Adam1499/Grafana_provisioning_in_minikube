@@ -1,1 +1,1 @@
-# Grafana_provisioning_in_minikube
+# Grafana provisioning in minikube
