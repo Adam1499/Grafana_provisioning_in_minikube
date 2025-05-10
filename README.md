@@ -35,3 +35,13 @@ This project contains a simple setup for deploying [Grafana](https://grafana.com
     ```bash
     minikube service grafana
     ```
+
+### 🔐 Default Login Credentials
+
+When Grafana starts for the first time and no credentials are configured, it uses the following default credentials:
+
+- **Username:** `admin`  
+- **Password:** `admin`
+
+You will be prompted to change the password upon first login.  
+To override these credentials, you can set the environment variables `GF_SECURITY_ADMIN_USER` and `GF_SECURITY_ADMIN_PASSWORD` in your deployment configuration `k8s\grafana\deployment.yml`.
