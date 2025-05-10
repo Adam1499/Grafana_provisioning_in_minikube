@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: timescaledb-init-scripts
+data:
+  init.sql: |
+    -- Inserting test data
+    CREATE TABLE metrics (
+        time        TIMESTAMPTZ       NOT NULL,
+        temperature DOUBLE PRECISION  NOT NULL,
+        humidity    DOUBLE PRECISION  NOT NULL
+    );
+
+    INSERT INTO metrics (time, temperature, humidity)
+    VALUES
+        (NOW() - INTERVAL '1 hour', 22.5, 45.0),
+        (NOW() - INTERVAL '2 hours', 21.8, 46.5),
+        (NOW() - INTERVAL '3 hours', 20.2, 47.0),
+        (NOW() - INTERVAL '4 hours', 19.9, 48.5),
+        (NOW() - INTERVAL '5 hours', 23.0, 44.0),
+        (NOW() - INTERVAL '6 hours', 24.1, 42.0),
+        (NOW() - INTERVAL '7 hours', 25.5, 41.0),
+        (NOW() - INTERVAL '8 hours', 26.0, 40.5),
+        (NOW() - INTERVAL '9 hours', 27.0, 39.5),
+        (NOW() - INTERVAL '10 hours', 28.5, 38.5);
