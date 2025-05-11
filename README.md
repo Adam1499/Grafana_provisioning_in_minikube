@@ -1,6 +1,6 @@
-## 🚀 Deploying Grafana to Minikube
+## 🚀 Automating Grafana Dashboard Provisioning in Minikube
 
-This project contains a simple setup for deploying [Grafana](https://grafana.com/) into a local Kubernetes cluster using [Minikube](https://minikube.sigs.k8s.io/).
+This project demonstrates how to deploy [Grafana](https://grafana.com/) into a local Kubernetes cluster using [Minikube](https://minikube.sigs.k8s.io/). The main goal of this project is to automate the provisioning of Grafana dashboards, allowing for easy and reproducible deployment of pre-configured dashboards into Grafana instances running in Kubernetes.
 
 ### ✅ Prerequisites
 
@@ -12,22 +12,24 @@ This project contains a simple setup for deploying [Grafana](https://grafana.com
 
 ### 🛠️ Deployment Steps
 
-1. **Apply the deployment:**
+1. **Apply the deployments:**
 
    ```bash
    kubectl apply -f k8s/grafana/deployment.yml
+   kubectl apply -f k8s/timescaledb/deployment.yml
    ```
 
-2. **Check that the Grafana Pod is running:**
+2. **Check that the Pods are running:**
 
     ```bash
     kubectl get pods
     ```
 
-3. **Apply the service:**
+3. **Apply the services:**
 
     ```bash
     kubectl apply -f k8s/grafana/service.yml
+    kubectl apply -f k8s/timescaledb/service.yml
     ```
 
 4. **Access Grafana in your browser:**
@@ -36,9 +38,15 @@ This project contains a simple setup for deploying [Grafana](https://grafana.com
     minikube service grafana
     ```
 
-### 🔐 Default Login Credentials
+### 🔐 Access Grafana and Login Credentials
 
-When Grafana starts for the first time and no credentials are configured, it uses the following default credentials:
+After deploying Grafana, you can access it by running the following command to open it in your default web browser:
+
+    ```bash
+    minikube service grafana
+    ```
+
+This will open Grafana at the Minikube service URL, typically at `http://<minikube-ip>:<node-port>`. If everything is set up correctly, Grafana will be accessible. The first time you log in, you will be prompted to use the default credentials:
 
 - **Username:** `admin`  
 - **Password:** `admin`
