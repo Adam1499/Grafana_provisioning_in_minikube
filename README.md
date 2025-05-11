@@ -41,7 +41,6 @@ This project demonstrates how to deploy [Grafana](https://grafana.com/) into a l
 ### 🔐 Access Grafana and Login Credentials
 
 After deploying Grafana, you can access it by running the following command to open it in your default web browser:
-
     ```bash
     minikube service grafana
     ```
